@@ -28,6 +28,8 @@ public class Neighbour {
     /** About me */
     private String aboutMe;
 
+    private Boolean isFavorite;
+
     /**
      * Constructor
      * @param id
@@ -35,8 +37,9 @@ public class Neighbour {
      * @param avatarUrl
      */
     public Neighbour(long id, String name, String avatarUrl, String address,
-                     String phoneNumber, String addEmail, String aboutMe) {
+                     String phoneNumber, String addEmail, String aboutMe, Boolean isFavorite) {
         this.id = id;
+        this.isFavorite = isFavorite    ;
         this.name = name;
         this.avatarUrl = avatarUrl;
         this.address = address;
@@ -99,6 +102,14 @@ public class Neighbour {
 
     public void setMailAddresse(String addEmail) {
         this.mailAddresse = addEmail;
+    }
+
+    public Boolean getFavorite() {
+        return isFavorite;
+    }
+
+    public void setFavorite(Boolean favorite) {
+        isFavorite = favorite;
     }
 
     @Override

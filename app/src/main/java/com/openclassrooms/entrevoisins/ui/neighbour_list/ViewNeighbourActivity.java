@@ -69,7 +69,7 @@ public class ViewNeighbourActivity extends FragmentActivity {
         findViewById(R.id.button_etoile).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Neighbour favoriteNeighbour = new  Neighbour(id,userName,photo,address,numtel,addmail, aproposdemoi);
+                Neighbour favoriteNeighbour = new  Neighbour(id,userName,photo,address,numtel,addmail, aproposdemoi, false);
                 // public Neighbour(long id, String name, String avatarUrl, String address,
                 //                     String phoneNumber, String addEmail, String aboutMe)
                 mApiService.createNeighbour(favoriteNeighbour);

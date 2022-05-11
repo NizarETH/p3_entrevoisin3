@@ -6,6 +6,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -26,20 +27,16 @@ import butterknife.OnClick;
 
 public class AddNeighbourActivity extends AppCompatActivity {
 
-    @BindView(R.id.avatar)
+
     ImageView avatar;
-    @BindView(R.id.nameLyt)
     TextInputLayout nameInput;
-    @BindView(R.id.phoneNumberLyt)
     TextInputLayout phoneInput;
-    @BindView(R.id.addressLyt)
     TextInputLayout addressInput;
-    @BindView(R.id.avatarUrlLyt)
-    TextInputLayout addMail;
-    @BindView(R.id.aboutMeLyt)
-    TextInputLayout aboutMeInput;
-    @BindView(R.id.create)
+
+    TextView aboutMeInput;
     MaterialButton addButton;
+
+    TextInputLayout addMail;
 
     private NeighbourApiService mApiService;
     private String mNeighbourImage;
@@ -51,6 +48,17 @@ public class AddNeighbourActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mApiService = DI.getNeighbourApiService();
+
+        addMail  = findViewById(R.id.aboutMeLyt);
+        avatar  = findViewById(R.id.avatar);
+        nameInput  = findViewById(R.id.nameLyt);
+        phoneInput  = findViewById(R.id.phoneNumberLyt);
+        addressInput  = findViewById(R.id.addressLyt);
+        aboutMeInput  = findViewById(R.id.avatarUrlLyt);
+        addButton  = findViewById(R.id.create);
+
+
+
         init();
     }
 
@@ -90,8 +98,9 @@ public class AddNeighbourActivity extends AppCompatActivity {
                 mNeighbourImage,
                 addressInput.getEditText().getText().toString(),
                 phoneInput.getEditText().getText().toString(),
-                aboutMeInput.getEditText().getText().toString(),
-                addMail.getEditText().getText().toString()
+                aboutMeInput.getText().toString(),
+                addMail.getEditText().getText().toString(),
+                false
         );
         mApiService.createNeighbour(neighbour);
         finish();
