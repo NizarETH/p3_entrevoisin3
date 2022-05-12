@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
 
 import com.bumptech.glide.Glide;
+import com.openclassrooms.entrevoisins.PreferencesManager;
 import com.openclassrooms.entrevoisins.R;
 import com.openclassrooms.entrevoisins.di.DI;
 import com.openclassrooms.entrevoisins.model.Neighbour;
@@ -69,10 +70,15 @@ public class ViewNeighbourActivity extends FragmentActivity {
         findViewById(R.id.button_etoile).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Neighbour favoriteNeighbour = new  Neighbour(id,userName,photo,address,numtel,addmail, aproposdemoi, false);
-                // public Neighbour(long id, String name, String avatarUrl, String address,
-                //                     String phoneNumber, String addEmail, String aboutMe)
-                mApiService.createNeighbour(favoriteNeighbour);
+
+                PreferencesManager prefs = PreferencesManager.getInstance();
+                prefs.setIntValue("id",id);
+                prefs.setStringValue("userName",userName);
+                prefs.setStringValue("photo",photo);
+                prefs.setStringValue("address",address);
+                prefs.setStringValue("numtel",numtel);
+                prefs.setStringValue("addmail",addmail);
+                prefs.setStringValue("aproposdemoi",aproposdemoi);
                 finish();
             }
         });

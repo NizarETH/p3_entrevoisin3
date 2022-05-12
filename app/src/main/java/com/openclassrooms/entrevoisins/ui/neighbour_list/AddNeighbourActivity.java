@@ -54,7 +54,7 @@ public class AddNeighbourActivity extends AppCompatActivity {
         nameInput  = findViewById(R.id.nameLyt);
         phoneInput  = findViewById(R.id.phoneNumberLyt);
         addressInput  = findViewById(R.id.addressLyt);
-        aboutMeInput  = findViewById(R.id.avatarUrlLyt);
+        aboutMeInput  = findViewById(R.id.aboutMe);
         addButton  = findViewById(R.id.create);
 
 

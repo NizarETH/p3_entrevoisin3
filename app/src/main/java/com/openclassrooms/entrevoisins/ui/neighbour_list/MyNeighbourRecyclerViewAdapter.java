@@ -42,7 +42,7 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder,  int position) {
         Neighbour neighbour = mNeighbours.get(position);
         holder.mNeighbourName.setText(neighbour.getName());
         Glide.with(holder.mNeighbourAvatar.getContext())
@@ -53,8 +53,9 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
         holder.mDeleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EventBus.getDefault().post(new DeleteNeighbourEvent(neighbour));
-            }
+                mNeighbours.remove(neighbour);
+                notifyDataSetChanged();
+             }
         });
        holder.mainContent.setOnClickListener(new View.OnClickListener() {
             @Override

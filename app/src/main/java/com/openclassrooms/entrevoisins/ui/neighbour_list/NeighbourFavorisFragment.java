@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.openclassrooms.entrevoisins.PreferencesManager;
 import com.openclassrooms.entrevoisins.R;
 import com.openclassrooms.entrevoisins.di.DI;
 import com.openclassrooms.entrevoisins.events.DeleteNeighbourEvent;
@@ -61,6 +62,22 @@ public class NeighbourFavorisFragment extends Fragment {
      */
     private void initList() {
         mNeighbours = mApiService.getFavorisNeighbours();
+        PreferencesManager prefs = PreferencesManager.getInstance();
+        Neighbour neighbour = new Neighbour(prefs.getIntValue("id"),
+                prefs.getStringValue("userName"),
+                prefs.getStringValue("photo"),
+                prefs.getStringValue("address"),
+                prefs.getStringValue("numtel"),
+                prefs.getStringValue("addmail"),
+                prefs.getStringValue("aproposdemoi"),
+                true
+                );
+        if(prefs.getStringValue("userName") != null && !prefs.getStringValue("userName").isEmpty())
+        {
+            mNeighbours.add(neighbour);
+            prefs.clear();
+        }
+
         mRecyclerView.setAdapter(new MyNeighbourRecyclerViewAdapter(mNeighbours));
     }
 

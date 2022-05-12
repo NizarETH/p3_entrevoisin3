@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
+import com.openclassrooms.entrevoisins.PreferencesManager;
 import com.openclassrooms.entrevoisins.R;
 
 import butterknife.BindView;
@@ -29,6 +30,8 @@ public class ListNeighbourActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_neighbour);
+        PreferencesManager.getInstance().clear();
+
         ButterKnife.bind(this);
 
         setSupportActionBar(mToolbar);
